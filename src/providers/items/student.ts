@@ -4,17 +4,10 @@ import { Item } from '../../models/item';
 import { Api } from '../api/api';
 
 @Injectable()
-export class Items {
+export class Student {
   items: Item[] = [];
-  students: Item[] = [];
 
   defaultItem: any = {
-    "_id": "5a09d0c4f805432b7c87008f",
-    "name": "EA",
-    "quatri": "Tardor",
-    "studies": "Telematica",
-    "__v": 0,
-    "profilePic": "assets/img/speakers/Tardor.jpg",
     "studentId": [
       {
         "_id": "5a0984d57043b831eca19ed9",
@@ -31,20 +24,11 @@ export class Items {
 
   constructor(public api: Api) { }
 
+
   query() {
     this.items = this.defaultItem;
-    this.api.get('subject/api/todos').subscribe((res: any) => { this.items = res });
-    return this.api.get('subject/api/todos');
-  }
-  queryStudents() {
-    this.items = this.defaultItem;
-    this.api.get('student/api/todos').subscribe((res: any) => { this.students = res });
+    this.api.get('student/api/todos').subscribe((res: any) => { this.items = res });
     return this.api.get('student/api/todos');
-  }
-
-  delateStudentFromSubject(subject: Item) {
-    this.api.post('subject/api/deleteStudentSubject/'+subject._id, subject).subscribe((res: any)=>{console.log(res)});
-    return this.api.post('subject/api/deleteStudentSubject/'+subject._id, subject);
   }
 
   /* query(params?: any) {
@@ -69,7 +53,7 @@ export class Items {
   }
 
   add(item: Item) {
-    return this.api.post('subject/api/', item);
+    return this.api.post('student/api/', item);
   }
 
   delete(item: Item) {

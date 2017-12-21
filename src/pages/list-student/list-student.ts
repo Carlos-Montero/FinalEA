@@ -1,24 +1,27 @@
 import { Component } from '@angular/core';
-import {IonicPage, LoadingController, ModalController, NavController} from 'ionic-angular';
-
+import { IonicPage, LoadingController, ModalController, NavController, NavParams } from 'ionic-angular';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
-import {MainPage} from "../pages";
+import {Student} from "../../providers/items/student";
+
+/**
+ * Generated class for the ListStudentPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
-  selector: 'page-list-master',
-  templateUrl: 'list-master.html'
+  selector: 'page-list-student',
+  templateUrl: 'list-student.html',
 })
-export class ListMasterPage {
+export class ListStudentPage {
   currentItems: Item[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public items: Student, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public navParams: NavParams) {
   }
 
-  /**
-   * The view loaded, let's query our items for the list
-   */
   ionViewDidLoad() {
     this.items.query().subscribe((res: any) => {
       this.currentItems=res;
@@ -44,10 +47,6 @@ export class ListMasterPage {
     });
   }
 
-  /**
-   * Prompt the user to add a new item. This shows our ItemCreatePage in a
-   * modal and then adds the new item to our data source if the user created one.
-   */
   addItem() {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
@@ -66,26 +65,19 @@ export class ListMasterPage {
     });
     addModal.present();
   }
-
-  /**
-   * Delete an item from the list of items.
-   */
   deleteItem(item) {
     this.items.delete(item);
   }
-
-  /**
-   * Navigate to the detail page for this item.
-   */
   openItem(item: Item) {
     let loader = this.loadingCtrl.create({
       dismissOnPageChange: true ,
-      content: "Cargando datos de la asignatura...",
+      content: "Cargando datos del estudiante...",
       duration: 3000
     });
     loader.present();
-    this.navCtrl.push('ItemDetailPage', {
+    this.navCtrl.push('ItemDetailStudentPage', {
       item: item
     });
   }
+
 }

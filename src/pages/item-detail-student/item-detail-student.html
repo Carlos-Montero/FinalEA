@@ -16,14 +16,14 @@
 
 
 <ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + 'assets/img/stone.gif' + ')'">
+  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + 'assets/img/'+item.name+'.jpg' + ')'">
   </div>
 
   <div class="item-detail" padding>
     <h2>Nombre: {{item.name}}</h2>
     <p>{{item.address}}</p>
-    <p>Telef: {{item.phone.home}}</p>
-    <p>Movil: {{item.phone.work}}</p>
+    <p>Telef: {{item.phone}}</p>
+
     <div>
       <button ion-button block color="secondary" round>Add Signature</button>
     </div>

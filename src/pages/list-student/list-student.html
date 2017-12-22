@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
+    <ion-title>Estudiantes</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="addItem()">
@@ -23,7 +23,7 @@
       <button ion-item (click)="openItem(item)">
         <ion-item>
           <ion-avatar item-start>
-            <img [src]="'assets/img/stone.gif'" />
+            <img [src]="'assets/img/'+item.name+'.jpg'" />
           </ion-avatar>
           <h2>{{item.name}}</h2>
           <h3>{{item.address}}</h3>

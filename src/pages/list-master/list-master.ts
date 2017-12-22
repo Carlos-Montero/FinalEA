@@ -80,8 +80,8 @@ export class ListMasterPage {
   openItem(item: Item) {
     let loader = this.loadingCtrl.create({
       dismissOnPageChange: true ,
-      content: "Cargando datos de la asignatura...",
-      duration: 3000
+      //content: "Cargando datos de la asignatura...",
+      //duration: 3000
     });
     loader.present();
     this.navCtrl.push('ItemDetailPage', {

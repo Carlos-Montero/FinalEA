@@ -71,8 +71,8 @@ export class ListStudentPage {
   openItem(item: Item) {
     let loader = this.loadingCtrl.create({
       dismissOnPageChange: true ,
-      content: "Cargando datos del estudiante...",
-      duration: 3000
+      //content: "Cargando datos del estudiante...",
+      //duration: 3000
     });
     loader.present();
     this.navCtrl.push('ItemDetailStudentPage', {
